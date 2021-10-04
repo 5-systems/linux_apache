@@ -1,7 +1,5 @@
 <?php
 
-  // version 30.11.2018
-
   header('Access-Control-Allow-Origin: *');
   include_once('5c_files_lib.php');
 
@@ -119,7 +117,7 @@ function request_GET($url, $parameters, $log_path="", $coockie_path="", $headers
        
   $curl = curl_init();
   
-  if( !is_array($headers) && strlen($headers)===0 ) {
+  if( !is_array($headers) && strval($headers)===0 ) {
     $headers=array();
     $headers[]="Content-Type: application/x-www-form-urlencoded";
   }
@@ -141,7 +139,6 @@ function request_GET($url, $parameters, $log_path="", $coockie_path="", $headers
   curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($curl, CURLOPT_COOKIESESSION, false);
   curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);
-  curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
   curl_setopt($curl, CURLOPT_HTTPGET, true);
   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
