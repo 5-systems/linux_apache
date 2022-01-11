@@ -47,7 +47,7 @@
    if( is_array($dir_records) ) {
       
       reset($dir_records);
-      while( list($key, $value)=each($dir_records) ) {
+      foreach( $dir_records as $key=>$value ) {
          $data=Array();
          $data=get_data_from_filesystem($value);
          
@@ -159,7 +159,7 @@ function get_data_from_filesystem($dir_records='') {
    write_log('Search: dir='.$dir_search.' found files='.count($found_files), $log_file, 'GET_REC '.$uniqueid);   
    
    $dir_content=Array();	
-   while( list($key, $value)=each($found_files) ) {
+   foreach( $found_files as $key=>$value ) {
    
       $file_uniqueid=get_uniqueid($value['name'], 'u');
       if( strlen($file_uniqueid)===0 ) {
